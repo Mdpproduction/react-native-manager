@@ -9,7 +9,7 @@ import { Card, CardSection, Button } from './common';
 class EmployeeEdit extends Component {
  componentWillMount() {
   _.each(this.props.employee, (value, prop) => {
-   this.employeeUpdate({ prop, value });
+   this.props.employeeUpdate({ prop, value });
   });
  }
 
