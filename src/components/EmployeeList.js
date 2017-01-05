@@ -48,6 +48,8 @@ const mapStateToProps = state => {
   return { ...val, uid };
  });
 
+ console.log(state.employees);
+
  return { employees };
 };
 
