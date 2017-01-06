@@ -5,7 +5,8 @@ import {
  EMPLOYEE_UPDATE, 
  EMPLOYEE_CREATE,
  EMPLOYEES_FETCH,
- EMPLOYEE_SAVE
+ EMPLOYEE_SAVE,
+ EMPLOYEE_RESET
 } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -59,5 +60,27 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
 
     Actions.employeeList({ type: 'reset' });
    });
+ };
+};
+
+export const employeeDelete = ({ uid }) => {
+ const { currentUser } = firebase.auth();
+ 
+ return () => {
+  firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+   .remove()
+   .then(() => {
+    ToastAndroid.showWithGravity('Cancellazione avvenuta correttamente!', 
+     ToastAndroid.SHORT, ToastAndroid.BOTTOM    
+    );
+
+    Actions.employeeList({ type: 'reset' });
+   });
+ };
+};
+
+export const employeeReset = () => {
+ return {
+  type: EMPLOYEE_RESET
  };
 };
