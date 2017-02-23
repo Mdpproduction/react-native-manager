@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { View, Text, TouchableNativeFeedback } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { CardSection } from './common';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Card, CardSection } from './common';
 
 class ListItem extends Component {
  onRowPress() {
+  console.log('entra');
   Actions.employeeEdit({ employee: this.props.employee });
  }
 
@@ -12,15 +14,26 @@ class ListItem extends Component {
   const { name } = this.props.employee;
   
   return (
-   <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-    <View>
-     <CardSection>
-      <Text style={styles.titleStyle}>
-       {name}
-      </Text>
-     </CardSection>
-    </View>
-   </TouchableWithoutFeedback>
+   <Card> 
+     <TouchableNativeFeedback 
+      onPress={() => console.log('test')}
+      background={TouchableNativeFeedback.Ripple('red')}
+     >
+      <View>
+        <CardSection>
+         <View>
+          <Icon name="account-box" size={30} color="#900" />
+         </View>
+
+         <View>
+           <Text style={styles.titleStyle}>
+            {name}
+           </Text>
+         </View>
+        </CardSection>
+      </View>
+     </TouchableNativeFeedback>
+   </Card>
   );	
  }
 }
@@ -29,7 +42,7 @@ const styles = {
  titleStyle: {
   fontSize: 18,
   paddingLeft: 15
- }	
+ }
 };
 
 export default ListItem;
