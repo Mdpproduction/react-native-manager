@@ -30,6 +30,7 @@ class NavigationDrawer extends Component {
     drawerWidth={300}
     drawerPosition={DrawerLayoutAndroid.positions.Left}
     renderNavigationView={() => navigationView}
+    statusBarBackgroundColor="#dcdcdc"
    >
      <DefaultRenderer navigationState={children[0]} onNavigate={this.props.onNavigate} />
     </DrawerLayoutAndroid>

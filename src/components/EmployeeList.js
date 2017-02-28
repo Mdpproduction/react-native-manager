@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView } from 'react-native';
+import { ListView, UIManager } from 'react-native';
 import { employeesFetch } from '../actions';
 import ListItem from './ListItem';
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+UIManager.setLayoutAnimationEnabledExperimental(true);
 
 class EmployeeList extends Component {
  componentWillMount() {
@@ -35,6 +38,7 @@ class EmployeeList extends Component {
  render() {
   return (
    <ListView
+    style={{ paddingTop: 56 }}
     enableEmptySections
     dataSource={this.dataSource}
     renderRow={this.renderRow}

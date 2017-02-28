@@ -9,6 +9,7 @@ import {
  employeeDelete 
 } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
+import NavbarAndroid from './NavbarAndroid';
 
 class EmployeeEdit extends Component {
  state = { showModal: false };
@@ -48,21 +49,21 @@ class EmployeeEdit extends Component {
     <EmployeeForm />
 
     <CardSection>
-      <Button onPress={this.onButtonPress.bind(this)}>
-       Save Changes
-      </Button>
+     <Button onPress={this.onButtonPress.bind(this)}>
+      Save Changes
+     </Button>
     </CardSection>
 
     <CardSection>
-      <Button onPress={this.onTextPress.bind(this)}>
-       Text Schedule
-      </Button>
+     <Button onPress={this.onTextPress.bind(this)}>
+      Text Schedule
+     </Button>
     </CardSection>
 
     <CardSection>
-      <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
-       Delete Employee
-      </Button>
+     <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+      Delete Employee
+     </Button>
     </CardSection> 
 
     <Confirm

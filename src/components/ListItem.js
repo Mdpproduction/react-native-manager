@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableNativeFeedback } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Card, CardSection } from './common';
 
 class ListItem extends Component {
  onRowPress() {
-  console.log('entra');
   Actions.employeeEdit({ employee: this.props.employee });
  }
 
@@ -14,26 +11,14 @@ class ListItem extends Component {
   const { name } = this.props.employee;
   
   return (
-   <Card> 
      <TouchableNativeFeedback 
-      onPress={() => console.log('test')}
-      background={TouchableNativeFeedback.Ripple('red')}
+      onPress={this.onRowPress.bind(this)}
+      background={TouchableNativeFeedback.SelectableBackground()}
      >
-      <View>
-        <CardSection>
-         <View>
-          <Icon name="account-box" size={30} color="#900" />
-         </View>
-
-         <View>
-           <Text style={styles.titleStyle}>
-            {name}
-           </Text>
-         </View>
-        </CardSection>
+      <View style={{ height: 50 }}>
+          <Text style={styles.titleStyle}>{name}</Text>
       </View>
      </TouchableNativeFeedback>
-   </Card>
   );	
  }
 }
